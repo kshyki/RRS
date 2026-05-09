@@ -1,0 +1,13 @@
+bin/
+obj/
+*.user
+*.suo
+*.dll
+*.pdb
+*.cache
+*.genruntimeconfig.cache
+.idea/
+.vscode/
+*.csproj.user
+.DS_Store
+Thumbs.db
