@@ -42,8 +42,8 @@ namespace RandomizedRewardSystem.Models
                         }
 
                     }
-                    
-                    // remove group
+
+                    board.RemoveGroups(winingGroups);
                     // apply gravity
                     // refill board
                 }

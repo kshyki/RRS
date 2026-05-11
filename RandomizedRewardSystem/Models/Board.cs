@@ -15,7 +15,7 @@ namespace RandomizedRewardSystem.Models
             (0, 1)
         };
         
-        public Symbol?[,] Grid;
+        public Symbol[,] Grid;
         public bool[,] visited;
         public Board()
         {
@@ -103,6 +103,17 @@ namespace RandomizedRewardSystem.Models
                 foreach (var (r, c) in group)
                 {
                     Grid[r, c] = null;
+                }
+            }
+        }
+
+        public void RefillBoard()
+        {
+            for(int r = 0; r < Rows; r++)
+            {
+                for(int c = 0; c < Columns; c++)
+                {
+                    Grid[r , c] = SymbolFactory.GetRandomSymbol();
                 }
             }
         }
