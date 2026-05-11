@@ -2,10 +2,10 @@ namespace RandomizedRewardSystem.Models
 {
     public class Symbol
     {
-        public SymbolType Type;
-        public int Value;
-        public double Probability;
-        public bool IsMultiplier;
+        public SymbolType Type { get; set; }
+        public int Value { get; set; }
+        public double Probability { get; set; }
+        public bool IsMultiplier { get; set; }
 
         public Symbol(SymbolType type, int value, double probability, bool isMultiplier = false)
         {

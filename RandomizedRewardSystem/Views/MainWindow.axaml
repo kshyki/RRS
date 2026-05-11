@@ -15,6 +15,35 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <DockPanel>
+        <StackPanel Width="200" DockPanel.Dock="Right" Spacing="20" Margin="20">
+            <TextBlock Text="Gates Of Olympus" FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
+
+            <TextBlock Text="{Binding TotalScore, StringFormat='Score: {0}'}" FontSize="18"/>
+            <TextBlock Text="{Binding CurrentRound, StringFormat='Round: {0}/15'}" FontSize="18"/>
+            <TextBlock Text="{Binding RoundMultiplier, StringFormat='Multiplier: x{0}'}" FontSize="18"/>
+
+            <Button Content="SPIN" Command="{Binding PlayCommand}" HorizontalAlignment="Stretch" Height="50" FontSize="20"/>
+        </StackPanel>
+
+        <ItemsControl ItemsSource="{Binding Symbols}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <UniformGrid Columns="5" Rows="6"/>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>q
+
+        <ItemsControl.ItemTemplate> 
+            <DataTemplate>
+                <Border BorderBrush="Gray" BorderThickness="1" Margin="2">
+                    <TextBlock Text="{Binding Type}" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"/>
+                </Border>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DockPanel>
+
 
 </Window>

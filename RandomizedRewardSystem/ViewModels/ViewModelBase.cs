@@ -1,7 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using ReactiveUI;
 
 namespace RandomizedRewardSystem.ViewModels;
 
-public abstract class ViewModelBase : ObservableObject
+public class ViewModelBase : ReactiveObject
 {
 }

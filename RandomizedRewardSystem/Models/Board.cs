@@ -29,7 +29,7 @@ namespace RandomizedRewardSystem.Models
             {
                 for(int c = 0; c < Columns; c++)
                 {
-                    Grid[c,r] = SymbolFactory.GetRandomSymbol();
+                    Grid[r,c] = SymbolFactory.GetRandomSymbol();
                 }
             }
         }
