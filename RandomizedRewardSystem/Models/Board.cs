@@ -15,7 +15,7 @@ namespace RandomizedRewardSystem.Models
             (0, 1)
         };
         
-        public Symbol[,] Grid;
+        public Symbol?[,] Grid;
         public bool[,] visited;
         public Board()
         {
@@ -94,6 +94,17 @@ namespace RandomizedRewardSystem.Models
             }
 
             return allGroups;
+        }
+
+        public void RemoveGroups(List<List<(int r, int c)>> groups)
+        {
+            foreach (var group in groups)
+            {
+                foreach (var (r, c) in group)
+                {
+                    Grid[r, c] = null;
+                }
+            }
         }
     }
 }
