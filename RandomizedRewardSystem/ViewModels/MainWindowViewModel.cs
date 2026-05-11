@@ -1,9 +1,11 @@
 ﻿using ReactiveUI;
 using System.Reactive;
+using System.Collections.ObjectModel;
 namespace RandomizedRewardSystem.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
+    public ObservableCollection<Symbol> Symbols;
     private long _totalScore;
     public long TotalScore
     {
@@ -30,9 +32,24 @@ public partial class MainWindowViewModel : ViewModelBase
         PlayCommand = ReactiveCommand.Create(() =>
         {
            _game.PlayRound();
+
            TotalScore = _game.totalScore;
            CurrentRound = _game.currentRound;
            RoundMultiplier = _game.roundMultiplier; 
+
+           UpdateSymbolList();
         });
+    }
+
+    private void UpdateSymbolList()
+    {
+        Symbols.Clear();
+        for(int r = 0; r < 6; r++)
+        {
+            for(int c = 0; c < 5; c++)
+            {
+                Symbols.Add(_game.board.Grid[r,c]);
+            }
+        }
     }
 }
