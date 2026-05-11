@@ -1,4 +1,6 @@
-﻿namespace RandomizedRewardSystem.ViewModels;
+﻿using ReactiveUI;
+using System.Reactive;
+namespace RandomizedRewardSystem.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
@@ -17,11 +19,20 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     private int _roundMultiplier;
-    public int roundMultiplier
+    public int RoundMultiplier
     {
         get => _roundMultiplier;
         set => this.RaiseAndSetIfChanged(ref _roundMultiplier, value);
     }
 
-    
+    public MainWindowViewModel()
+    {
+        PlayCommand = ReactiveCommand.Create(() =>
+        {
+           _game.PlayRound();
+           TotalScore = _game.totalScore;
+           CurrentRound = _game.currentRound;
+           RoundMultiplier = _game.roundMultiplier; 
+        });
+    }
 }
