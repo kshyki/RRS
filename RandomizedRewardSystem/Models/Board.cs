@@ -113,7 +113,10 @@ namespace RandomizedRewardSystem.Models
             {
                 for(int c = 0; c < Columns; c++)
                 {
-                    Grid[r , c] = SymbolFactory.GetRandomSymbol();
+                    if(Grid[r, c] == null)
+                    {
+                        Grid[r , c] = SymbolFactory.GetRandomSymbol();   
+                    }
                 }
             }
         }
