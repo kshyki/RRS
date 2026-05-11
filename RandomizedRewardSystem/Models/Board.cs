@@ -117,5 +117,23 @@ namespace RandomizedRewardSystem.Models
                 }
             }
         }
+
+        public void ApplyGravity()
+        {
+            for(int c = 0; c < Columns; c++)
+            {
+                int emptyRow = Rows - 1;
+
+                for(int r = Rows - 1; r >= 0; r--)
+                {
+                    if(Grid[r, c] != null)
+                    {
+                        Grid[emptyRow, c] = Grid[r, c];
+                        if (emptyRow != r) Grid[r, c] = null;
+                        emptyRow--;
+                    }
+                }
+            }
+        }
     }
 }
