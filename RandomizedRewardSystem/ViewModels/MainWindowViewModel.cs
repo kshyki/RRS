@@ -33,15 +33,17 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
-        PlayCommand = ReactiveCommand.Create(() =>
+        UpdateSymbolList();
+
+        PlayCommand = new SimpleCommand(() =>
         {
-           _game.PlayRound();
+            _game.PlayRound();
 
-           TotalScore = _game.totalScore;
-           CurrentRound = _game.currentRound;
-           RoundMultiplier = _game.roundMultiplier; 
+            TotalScore = _game.totalScore;
+            CurrentRound = _game.currentRound;
+            RoundMultiplier = _game.roundMultiplier;
 
-           UpdateSymbolList();
+            UpdateSymbolList();
         });
     }
 

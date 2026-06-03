@@ -15,33 +15,51 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <DockPanel>
-        <StackPanel Width="200" DockPanel.Dock="Right" Spacing="20" Margin="20">
+    <DockPanel LastChildFill="True"> <StackPanel Width="220" DockPanel.Dock="Right" Spacing="20" Margin="20">
             <TextBlock Text="Gates Of Olympus" FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
 
-            <TextBlock Text="{Binding TotalScore, StringFormat='Score: {0}'}" FontSize="18"/>
-            <TextBlock Text="{Binding CurrentRound, StringFormat='Round: {0}/15'}" FontSize="18"/>
-            <TextBlock Text="{Binding RoundMultiplier, StringFormat='Multiplier: x{0}'}" FontSize="18"/>
+            <Border Background="#333333" Padding="15" CornerRadius="10">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="{Binding TotalScore, StringFormat='Score: {0}'}" FontSize="18" Foreground="Gold"/>
+                    <TextBlock Text="{Binding CurrentRound, StringFormat='Round: {0}/15'}" FontSize="18"/>
+                    <TextBlock Text="{Binding RoundMultiplier, StringFormat='Multiplier: x{0}'}" FontSize="18" Foreground="Cyan"/>
+                </StackPanel>
+            </Border>
 
-            <Button Content="SPIN" Command="{Binding PlayCommand}" HorizontalAlignment="Stretch" Height="50" FontSize="20"/>
+            <Button Content="SPIN" 
+                    Command="{Binding PlayCommand}" 
+                    HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Bottom"
+                    Height="60" 
+                    FontSize="24"
+                    FontWeight="Heavy"
+                    Background="DarkOrange"
+                    Foreground="White"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"/>
         </StackPanel>
 
-        <ItemsControl ItemsSource="{Binding Symbols}">
-        <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                <UniformGrid Columns="5" Rows="6"/>
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>q
+        <ItemsControl ItemsSource="{Binding Symbols}" Margin="10">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="5" Rows="6"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
 
-        <ItemsControl.ItemTemplate> 
-            <DataTemplate>
-                <Border BorderBrush="Gray" BorderThickness="1" Margin="2">
-                    <TextBlock Text="{Binding Type}" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Center"/>
-                </Border>
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Gold" 
+                            BorderThickness="2" 
+                            Margin="4" 
+                            CornerRadius="8" 
+                            Background="#1E1E1E">
+                        <Viewbox Stretch="Uniform" Margin="10"> <TextBlock Text="{Binding Type}" 
+                                    FontWeight="Bold"
+                                    Foreground="White"/>
+                        </Viewbox>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
         </ItemsControl>
     </DockPanel>
 

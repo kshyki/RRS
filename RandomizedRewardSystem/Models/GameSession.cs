@@ -3,7 +3,7 @@ namespace RandomizedRewardSystem.Models
     public class GameSession
     {
         public Board board = new Board();
-
+        private const int MAX_ROUNDS = 15;
         public int currentRound;
         public long totalScore;
         public int roundMultiplier;
@@ -18,6 +18,8 @@ namespace RandomizedRewardSystem.Models
 
         public void PlayRound()
         {
+            if (currentRound >= MAX_ROUNDS) return;
+
             currentRound++;
             roundMultiplier = 1;
             board.InitializeBoard();
