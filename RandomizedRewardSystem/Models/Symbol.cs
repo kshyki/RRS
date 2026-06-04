@@ -7,7 +7,16 @@ namespace RandomizedRewardSystem.Models
         public double Probability { get; set; }
         public bool IsMultiplier { get; set; }
 
-        public string ImagePath { get; set; }
+        public string ImagePath =>
+                    Type switch
+                    {
+                        SymbolType.Cherry => Config.Cherry,
+                        SymbolType.Lemon => Config.Lemon,
+                        SymbolType.Seven => Config.Seven,
+                        SymbolType.Diamond => Config.Diamond,
+                        SymbolType.Multiplier => Config.Multiplier,
+                        _ => null
+                    };
 
         public Symbol(SymbolType type, int value, double probability, bool isMultiplier = false)
         {

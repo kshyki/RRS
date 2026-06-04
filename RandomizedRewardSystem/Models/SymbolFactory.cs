@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace RandomizedRewardSystem.Models
-{
-    public static class SymbolFactory
-    {
+{    
+    public static class SymbolFactory{
         private static List<Symbol> _availableSymbols = new()
         {
             new Symbol(SymbolType.Cherry, 10, 0.4),
