@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace RandomizedRewardSystem.Models
 {
     public class GameSession
@@ -20,6 +22,7 @@ namespace RandomizedRewardSystem.Models
         {
             long roundWin = 0;
             int accumulatedMultiplier = 0;
+            HashSet<Symbol> usedMultipliers = new();
 
             if (currentRound >= MAX_ROUNDS) return;
 
@@ -30,6 +33,7 @@ namespace RandomizedRewardSystem.Models
             do
             {
                 var winingGroups = board.FindWinningGroups();
+
                 isWin = winingGroups.Count > 0;
 
                 if (!isWin) break;
@@ -45,15 +49,17 @@ namespace RandomizedRewardSystem.Models
                         }
                     }
                 }
+
                 for (int r = 0; r < 6; r++)
                 {
                     for (int c = 0; c < 5; c++)
                     {
                         Symbol symbol = board.Grid[r, c];
 
-                        if (symbol.IsMultiplier)
+                        if (symbol.IsMultiplier && !usedMultipliers.Contains(symbol))
                         {
                             accumulatedMultiplier += 2;
+                            usedMultipliers.Add(symbol); 
                         }
                     }
                 }
