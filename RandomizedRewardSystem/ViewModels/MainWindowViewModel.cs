@@ -24,11 +24,11 @@ public partial class MainWindowViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _currentRound, value);
     }
 
-    private int _roundMultiplier;
-    public int RoundMultiplier
+    private int _gameMultiplier;
+    public int GameMultiplier
     {
-        get => _roundMultiplier;
-        set => this.RaiseAndSetIfChanged(ref _roundMultiplier, value);
+        get => _gameMultiplier;
+        set => this.RaiseAndSetIfChanged(ref _gameMultiplier, value);
     }
 
     public MainWindowViewModel()
@@ -41,7 +41,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
             TotalScore = _game.totalScore;
             CurrentRound = _game.currentRound;
-            RoundMultiplier = _game.roundMultiplier;
+            GameMultiplier = _game.gameMultiplier;
 
             UpdateSymbolList();
         });

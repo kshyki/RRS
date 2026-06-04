@@ -22,7 +22,7 @@
                 <StackPanel Spacing="10">
                     <TextBlock Text="{Binding TotalScore, StringFormat='Score: {0}'}" FontSize="18" Foreground="Gold"/>
                     <TextBlock Text="{Binding CurrentRound, StringFormat='Round: {0}/15'}" FontSize="18"/>
-                    <TextBlock Text="{Binding RoundMultiplier, StringFormat='Multiplier: x{0}'}" FontSize="18" Foreground="Cyan"/>
+                    <TextBlock Text="{Binding GameMultiplier, StringFormat='Multiplier: x{0}'}" FontSize="18" Foreground="Cyan"/>
                 </StackPanel>
             </Border>
 

@@ -6,52 +6,69 @@ namespace RandomizedRewardSystem.Models
         private const int MAX_ROUNDS = 15;
         public int currentRound;
         public long totalScore;
-        public int roundMultiplier;
+        public int gameMultiplier;
 
         public GameSession()
         {
             board.InitializeBoard();
             currentRound = 0;
             totalScore = 0;
-            roundMultiplier = 1;
+            gameMultiplier = 1;
         }
 
         public void PlayRound()
         {
+            long roundWin = 0;
+            int accumulatedMultiplier = 0;
+
             if (currentRound >= MAX_ROUNDS) return;
 
             currentRound++;
-            roundMultiplier = 1;
             board.InitializeBoard();
             bool isWin;
+
             do
             {
                 var winingGroups = board.FindWinningGroups();
                 isWin = winingGroups.Count > 0;
 
-                if (isWin)
+                if (!isWin) break;
+                foreach (var group in winingGroups)
                 {
-                    foreach(var group in winingGroups)
+                    foreach (var cell in group)
                     {
-                        Symbol currentSymbol = board.Grid[group[0].r, group[0].c];
+                        Symbol symbol = board.Grid[cell.r, cell.c];
 
-                        if (currentSymbol.IsMultiplier)
+                        if (!symbol.IsMultiplier)
                         {
-                            roundMultiplier += 2;
-                        } else
-                        {
-                            totalScore += currentSymbol.Value * group.Count * roundMultiplier;
+                            roundWin += symbol.Value;
                         }
-
                     }
-
-                    board.RemoveGroups(winingGroups);
-                    board.ApplyGravity();
-                    board.RefillBoard();
                 }
-            } 
-            while (isWin);
-        }
+                for (int r = 0; r < 6; r++)
+                {
+                    for (int c = 0; c < 5; c++)
+                    {
+                        Symbol symbol = board.Grid[r, c];
 
+                        if (symbol.IsMultiplier)
+                        {
+                            accumulatedMultiplier += 2;
+                        }
+                    }
+                }
+
+                board.RemoveGroups(winingGroups);
+                board.ApplyGravity();
+                board.RefillBoard();
+
+            } while (isWin);
+
+            if(gameMultiplier == 1 && accumulatedMultiplier != 0) gameMultiplier = accumulatedMultiplier;
+            else if(gameMultiplier != 1) gameMultiplier += accumulatedMultiplier;
+
+            roundWin *= gameMultiplier;
+            totalScore += roundWin;
+        }
     }
 }
