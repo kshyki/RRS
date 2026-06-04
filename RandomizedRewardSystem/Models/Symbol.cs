@@ -1,3 +1,4 @@
+using System;
 namespace RandomizedRewardSystem.Models
 {
     public class Symbol
