@@ -7,7 +7,7 @@ namespace RandomizedRewardSystem.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    public ObservableCollection<Symbol?> Symbols { get; } = new();
+    public ObservableCollection<Symbol> Symbols { get; } = new();
     private GameSession _game = new GameSession();
     public ICommand PlayCommand { get; }
     private long _totalScore;

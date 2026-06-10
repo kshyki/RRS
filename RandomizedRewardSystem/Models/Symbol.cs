@@ -1,3 +1,5 @@
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using System;
 namespace RandomizedRewardSystem.Models
 {
@@ -8,22 +10,14 @@ namespace RandomizedRewardSystem.Models
         public double Probability { get; set; }
         public bool IsMultiplier { get; set; }
 
-        public string ImagePath =>
-                    Type switch
-                    {
-                        SymbolType.Cherry => Config.Cherry,
-                        SymbolType.Lemon => Config.Lemon,
-                        SymbolType.Seven => Config.Seven,
-                        SymbolType.Diamond => Config.Diamond,
-                        SymbolType.Multiplier => Config.Multiplier,
-                        _ => null
-                    };
+        public Bitmap Image { get; set;}
 
-        public Symbol(SymbolType type, int value, double probability, bool isMultiplier = false)
+        public Symbol(SymbolType type, int value, double probability, string imagePath, bool isMultiplier = false)
         {
             Type = type;
             Value = value;
             Probability = probability;
+            Image = new Bitmap(AssetLoader.Open(new Uri(imagePath)));
             IsMultiplier = isMultiplier;
         }
     }
