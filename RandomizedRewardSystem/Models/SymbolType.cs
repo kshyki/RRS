@@ -1,6 +1,6 @@
 namespace RandomizedRewardSystem.Models
 {
-    public enum SymbolType
+    public enum SymbolType // all possible symbol types
     {
         Cherry,
         Lemon,

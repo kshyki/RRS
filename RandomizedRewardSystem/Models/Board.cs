@@ -23,7 +23,7 @@ namespace RandomizedRewardSystem.Models
             InitializeBoard();
         }
 
-        public void InitializeBoard()
+        public void InitializeBoard() // initializes the board
         {
             for(int r = 0; r < Rows; r++)
             {
@@ -34,12 +34,12 @@ namespace RandomizedRewardSystem.Models
             }
         }
 
-        public void SetSymbol(int row, int col, Symbol symbol)
+        public void SetSymbol(int row, int col, Symbol symbol) // setting symbol in [row, col] to symbol
         {
             Grid[row,col] = symbol;
         }
 
-        private void Search(int r, int c, SymbolType targetType, bool[,] visited, List<(int r, int c)> group)
+        private void Search(int r, int c, SymbolType targetType, bool[,] visited, List<(int r, int c)> group) // recursive function that searchs for groups of symbol with targetType
         {
 
             group.Add((r, c));
@@ -66,7 +66,7 @@ namespace RandomizedRewardSystem.Models
                 }
             }
         }
-        public List<List<(int r, int c)>> FindWinningGroups()
+        public List<List<(int r, int c)>> FindWinningGroups() // function that finds all winning groups on the current board
         {
             var allGroups = new List<List<(int r, int c)>>();
 
@@ -96,7 +96,7 @@ namespace RandomizedRewardSystem.Models
             return allGroups;
         }
 
-        public void RemoveGroups(List<List<(int r, int c)>> groups)
+        public void RemoveGroups(List<List<(int r, int c)>> groups) // replacs all winning symbols with null value
         {
             foreach (var group in groups)
             {
@@ -107,7 +107,7 @@ namespace RandomizedRewardSystem.Models
             }
         }
 
-        public void RefillBoard()
+        public void RefillBoard() // replaces all null symbols with a random one
         {
             for(int r = 0; r < Rows; r++)
             {
@@ -121,7 +121,7 @@ namespace RandomizedRewardSystem.Models
             }
         }
 
-        public void ApplyGravity()
+        public void ApplyGravity() // moves all symbols down while there are any null symbols
         {
             for(int c = 0; c < Columns; c++)
             {

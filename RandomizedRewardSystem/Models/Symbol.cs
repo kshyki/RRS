@@ -12,7 +12,7 @@ namespace RandomizedRewardSystem.Models
 
         public Bitmap Image { get; set;}
 
-        public Symbol(SymbolType type, int value, double probability, string imagePath, bool isMultiplier = false)
+        public Symbol(SymbolType type, int value, double probability, string imagePath, bool isMultiplier = false) // class for symbol object
         {
             Type = type;
             Value = value;

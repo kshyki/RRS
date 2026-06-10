@@ -18,7 +18,7 @@ namespace RandomizedRewardSystem.Models
             gameMultiplier = 1;
         }
 
-        public void PlayRound()
+        public void PlayRound() // method that runs one round of the game
         {
             long roundWin = 0;
             int accumulatedMultiplier = 0;

@@ -16,7 +16,7 @@ namespace RandomizedRewardSystem.Models
 
         private static Random _random = new();
 
-        public static Symbol GetRandomSymbol()
+        public static Symbol GetRandomSymbol() // selects random symbol depending on its probability
         {
             double diceRoll = _random.NextDouble();
             double cumulative = 0.0;

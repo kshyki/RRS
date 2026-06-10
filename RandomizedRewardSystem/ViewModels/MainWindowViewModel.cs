@@ -7,9 +7,9 @@ namespace RandomizedRewardSystem.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    public ObservableCollection<Symbol> Symbols { get; } = new();
+    public ObservableCollection<Symbol> Symbols { get; } = new(); // flat list of symbols which needs to be used with UI
     private GameSession _game = new GameSession();
-    public ICommand PlayCommand { get; }
+    public ICommand PlayCommand { get; } 
     private long _totalScore;
     public long TotalScore
     {
@@ -35,7 +35,7 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         UpdateSymbolList();
 
-        PlayCommand = new SimpleCommand(() =>
+        PlayCommand = new SimpleCommand(() => // play command for the button
         {
             _game.PlayRound();
 
@@ -47,7 +47,7 @@ public partial class MainWindowViewModel : ViewModelBase
         });
     }
 
-    private void UpdateSymbolList()
+    private void UpdateSymbolList() // making new board which is availble for 
     {
         Symbols.Clear();
         for(int r = 0; r < 6; r++)

@@ -1,6 +1,6 @@
 namespace RandomizedRewardSystem.Models
 {
-    public static class Config
+    public static class Config // some settings of class symbol that should be pre-determined
     {
         private const string BasePath = "avares://RandomizedRewardSystem/Assets/";
 
