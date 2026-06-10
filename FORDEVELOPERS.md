@@ -76,6 +76,12 @@ public void ApplyGravity()
     }
 }
 ```
+### 3. Game Loop Execution (GameSession.cs)
+
+The core game execution logic runs inside `PlayRound()`. The entire round is processed within a `do-while` loop to support chained cascade reactions, where new matches may appear after gravity is applied.
+
+<img width="1088" height="657" alt="image" src="https://github.com/user-attachments/assets/2c6f34c2-7ce2-4b99-854d-c3fa4bcf1cf2" />
+
 ## Multiplier Progression Quirks
 
 Multipliers are calculated globally from the active board state during each cascade iteration. A `HashSet<Symbol>` is used to ensure that the same instantiated multiplier symbol is not counted more than once across consecutive cascade passes.
@@ -83,4 +89,5 @@ Multipliers are calculated globally from the active board state during each casc
 ### State Logic Update Formula
 
 If Current Multiplier = 1: Multiplier = Accumulated
-If Current Multiplier} > 1: Multiplier = Multiplier + Accumulated
+
+If Current Multiplier > 1: Multiplier = Multiplier + Accumulated
