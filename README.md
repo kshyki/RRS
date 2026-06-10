@@ -18,7 +18,7 @@ The game is played on a **6 × 5 grid** filled with randomly generated reward sy
 
 ## Winning Conditions
 
-The game uses a **cluster-pay system** instead of traditional paylines.
+The game uses a **cluster-pay system** instead of traditional paylines in similar slotgames.
 
 A **Winning Group** is created when:
 
