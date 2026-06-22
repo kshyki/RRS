@@ -14,7 +14,22 @@ namespace RandomizedRewardSystem.Models
             new Symbol(SymbolType.Multiplier, 0, 0.05, Config.Multiplier, true)
         };
 
-        private static Random _random = new();
+        private static Random _random;
+
+        static SymbolFactory()
+        {
+            _random = new Random();
+        }
+
+        public static void SetRandomProvider(Random customRandom)// allows unittests to change random symbol to the custom
+        {
+            _random = customRandom;
+        }
+
+        public static void ResetRandomProvider() // allows to return simple random
+        {
+            _random = new Random();
+        }
 
         public static Symbol GetRandomSymbol() // selects random symbol depending on its probability
         {
