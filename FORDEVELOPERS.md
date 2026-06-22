@@ -91,3 +91,12 @@ Multipliers are calculated globally from the active board state during each casc
 If Current Multiplier = 1: Multiplier = Accumulated
 
 If Current Multiplier > 1: Multiplier = Multiplier + Accumulated
+
+## Unit tests
+
+To run unit tests, run type `dotnet test` from your root directory
+They are checking 4 things: 
+- Initialization of the board.
+- Whether the number of rounds is increasing.
+- Whether the number of rounds <= 15.
+- Whether multiplier >= 1.

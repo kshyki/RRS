@@ -33,7 +33,7 @@ public class GameSessionTests
     }
 
     [Fact]
-    public void GameMultiplier_ShouldNeverDropBelowOne() // check that multiplier >= 1
+    public void GameMultiplier_ShouldNeverDropBelowOne() // check whether multiplier >= 1
     {
         var game = new GameSession();
 
