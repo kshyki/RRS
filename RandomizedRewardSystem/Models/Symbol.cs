@@ -17,8 +17,16 @@ namespace RandomizedRewardSystem.Models
             Type = type;
             Value = value;
             Probability = probability;
-            Image = new Bitmap(AssetLoader.Open(new Uri(imagePath)));
             IsMultiplier = isMultiplier;
+            
+            try
+            {
+                Image = new Bitmap(AssetLoader.Open(new Uri(imagePath)));
+            }
+            catch
+            {
+                Image = null;
+            }
         }
     }
 }
